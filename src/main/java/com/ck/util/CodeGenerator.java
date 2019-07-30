@@ -41,11 +41,11 @@ public class CodeGenerator {
             数据源配置
          */
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/lm_dev?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8");
+        dsc.setUrl("jdbc:mysql://47.103.17.3:3306/lm_dev?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8");
         dsc.setSchemaName("public");// 数据库 schema name(例如 PostgreSQL 可指定为 public)
         dsc.setDbType(DbType.MYSQL);// 数据库类型
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");// 驱动名称
-        dsc.setUsername("root"); // 用户名
+        dsc.setUsername("chenkang"); // 用户名
         dsc.setPassword("258963"); // 密码
         /*
            类型转换 默认由 dbType 类型决定选择对应数据库内置实现。
@@ -64,14 +64,14 @@ public class CodeGenerator {
             包配置
          */
         PackageConfig pc = new PackageConfig();
-//        pc.setModuleName("foundation");// 父包模块名
+        pc.setModuleName("foundation");// 父包模块名
         pc.setParent("com.ck.mybatisplus");// 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名
         pc.setService("service");// Service包名
-        pc.setEntity("entity");// Service包名
+        pc.setEntity("entity");// Entity包名
         pc.setServiceImpl("service.impl");// ServiceImpl包名
         pc.setMapper("mapper");// Mapper包名
         pc.setController("controller");// Contoller包名
-        pc.setXml("mapper.xml");// Mapper.xml包名
+        // pc.setXml("mapper.xml");// Mapper.xml包名
         mpg.setPackageInfo(pc);
 
         /*
@@ -114,15 +114,15 @@ public class CodeGenerator {
             }
         });
         // 自定义判断是否创建文件,该配置用于判断某个类是否需要覆盖创建，如果想覆盖之前已生成的文件，isCreate方法直接返回true，默认是false；
-//        cfg.setFileCreate(new IFileCreate() {
-//            @Override
-//            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-//                // 判断自定义文件夹是否需要创建，
-////                checkDir("调用默认方法创建的目录");
-//                // 当然也可以自定义哪些文件可以被覆盖哪些不可以被覆盖，更新判断逻辑返回true或者false
-//                return false;
-//            }
-//        });
+        cfg.setFileCreate(new IFileCreate() {
+            @Override
+            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
+                // 判断自定义文件夹是否需要创建，
+//                checkDir("调用默认方法创建的目录");
+                // 当然也可以自定义哪些文件可以被覆盖哪些不可以被覆盖，更新判断逻辑返回true或者false
+                return false;
+            }
+        });
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
@@ -130,19 +130,21 @@ public class CodeGenerator {
             策略配置
          */
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setNaming(NamingStrategy.underline_to_camel);// 数据库表映射到实体的命名策略:下划线转驼峰
-        strategy.setColumnNaming(NamingStrategy.underline_to_camel);// 数据库表字段映射到实体的命名策略, 未指定按照 naming 执行
+        // 数据库表映射到实体的命名策略:下划线转驼峰
+        strategy.setNaming(NamingStrategy.underline_to_camel);
+        // 数据库表字段映射到实体的命名策略, 未指定按照 naming 执行
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // 自定义继承类全称，带包名 (以下为示例)
-//        strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
-//        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
+        strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
+        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
         strategy.setEntityLombokModel(true);// 【实体】是否为lombok模型（默认 false）
         strategy.setRestControllerStyle(true);// 生成 @RestController 控制器
         strategy.setSuperEntityColumns("id");// 写于父类中的公共字段
         strategy.setInclude("fnd_user");// 需要包含的表名，允许正则表达式（与exclude二选一配置）
-//        strategy.setExclude("m_fnd_user1");// 需要排除的表名，允许正则表达式
+        strategy.setExclude("m_fnd_user1");// 需要排除的表名，允许正则表达式
         strategy.setControllerMappingHyphenStyle(true);// 驼峰转连字符
         strategy.setEntityTableFieldAnnotationEnable(true);// 是否生成实体时，生成字段注解 默认false;
-//        strategy.setTablePrefix(pc.getModuleName() + "_");// 表前缀
+        strategy.setTablePrefix(pc.getModuleName() + "_");// 表前缀
         mpg.setStrategy(strategy);
 
         /*

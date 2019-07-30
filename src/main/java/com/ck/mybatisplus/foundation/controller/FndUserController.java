@@ -1,4 +1,4 @@
-package com.ck.mybatisplus.controller;
+package com.ck.mybatisplus.foundation.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author ck
- * @since 2019-07-26
+ * @since 2019-07-30
  */
 @RestController
-@RequestMapping("/fnd-user")
+@RequestMapping("/foundation/fnd-user")
 public class FndUserController {
 
 }

@@ -1,8 +1,8 @@
-package com.ck.mybatisplus.service.impl;
+package com.ck.mybatisplus.foundation.service.impl;
 
-import com.ck.mybatisplus.entity.FndUser;
-import com.ck.mybatisplus.mapper.FndUserMapper;
-import com.ck.mybatisplus.service.IFndUserService;
+import com.ck.mybatisplus.foundation.entity.FndUser;
+import com.ck.mybatisplus.foundation.mapper.FndUserMapper;
+import com.ck.mybatisplus.foundation.service.IFndUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ck
- * @since 2019-07-26
+ * @since 2019-07-30
  */
 @Service
 public class FndUserServiceImpl extends ServiceImpl<FndUserMapper, FndUser> implements IFndUserService {

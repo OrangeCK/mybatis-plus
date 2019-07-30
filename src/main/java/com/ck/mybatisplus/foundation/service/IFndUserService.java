@@ -1,6 +1,6 @@
-package com.ck.mybatisplus.service;
+package com.ck.mybatisplus.foundation.service;
 
-import com.ck.mybatisplus.entity.FndUser;
+import com.ck.mybatisplus.foundation.entity.FndUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author ck
- * @since 2019-07-26
+ * @since 2019-07-30
  */
 public interface IFndUserService extends IService<FndUser> {
 

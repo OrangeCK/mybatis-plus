@@ -1,5 +1,6 @@
-package com.ck.mybatisplus.entity;
+package com.ck.mybatisplus.foundation.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author ck
- * @since 2019-07-26
+ * @since 2019-07-30
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -21,6 +22,9 @@ import lombok.experimental.Accessors;
 public class FndUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @TableId("id")
+    private String id;
 
     /**
      * 登录名称

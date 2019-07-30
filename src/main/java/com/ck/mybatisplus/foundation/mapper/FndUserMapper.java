@@ -1,6 +1,6 @@
-package com.ck.mybatisplus.mapper;
+package com.ck.mybatisplus.foundation.mapper;
 
-import com.ck.mybatisplus.entity.FndUser;
+import com.ck.mybatisplus.foundation.entity.FndUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author ck
- * @since 2019-07-26
+ * @since 2019-07-30
  */
 public interface FndUserMapper extends BaseMapper<FndUser> {
 
