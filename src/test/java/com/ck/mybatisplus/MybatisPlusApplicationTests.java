@@ -22,6 +22,36 @@ public class MybatisPlusApplicationTests {
     }
 
     @Test
+    public void fndUserSaveTest() {
+        FndUser fndUser = new FndUser();
+        fndUser.setJobNumber("123456789");
+        fndUser.setUserPhone("1888888888");
+        fndUser.setUserName("橙子");
+        fndUser.setLoginName("chenkang");
+        iFndUserService.save(fndUser);
+    }
+
+    @Test
+    public void fndUserUpdateTest() {
+        FndUser fndUser = new FndUser();
+        fndUser.setJobNumber("1234567891");
+        fndUser.setUserName("栗子");
+        fndUser.setId("1154034819131699202");
+        fndUser.setLoginName("lizi");
+        iFndUserService.updateById(fndUser);
+    }
+
+    @Test
+    public void fndUserListTest() {
+        List<FndUser> fndUserList = iFndUserService.list();
+    }
+
+    @Test
+    public void fndUserDeleteTest() {
+        iFndUserService.removeById("1154034819131699202");
+    }
+
+    @Test
     public void fndUserTest() {
         FndUser fndUser = new FndUser();
         fndUser.setJobNumber("01378803");

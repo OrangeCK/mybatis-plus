@@ -52,4 +52,13 @@ public class FndUserServiceImpl extends ServiceImpl<FndUserMapper, FndUser> impl
         // Service的查询接口（和Mapper的selectList接口时差不多的意思，）
         return super.list(fndUserLambdaQueryWrapper);
     }
+
+    @Override
+    public void simpleUpdate(FndUser fndUser) {
+        UpdateWrapper<FndUser> fndUserUpdateWrapper = new UpdateWrapper<>();
+        // .lambda()这种形式和LambdaUpdateWrapper是一个意思
+        fndUserUpdateWrapper.lambda().set(FndUser::getJobNumber, fndUser.getJobNumber())
+                .set(FndUser::getLoginName, fndUser.getLoginName());
+        super.update(fndUserUpdateWrapper);
+    }
 }

@@ -17,6 +17,8 @@ public interface IFndUserService extends IService<FndUser> {
 
     List<FndUser> simpleQuery(FndUser fndUser);
 
+    void simpleUpdate(FndUser fndUser);
+
     List<FndUser> lambdaSimpleQuery(FndUser fndUser);
 
 }
