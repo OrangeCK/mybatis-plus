@@ -54,11 +54,18 @@ public class FndUserServiceImpl extends ServiceImpl<FndUserMapper, FndUser> impl
     }
 
     @Override
-    public void simpleUpdate(FndUser fndUser) {
+    public void simpleUpdateWrapperUpdate(FndUser fndUser) {
         UpdateWrapper<FndUser> fndUserUpdateWrapper = new UpdateWrapper<>();
         // .lambda()这种形式和LambdaUpdateWrapper是一个意思
         fndUserUpdateWrapper.lambda().set(FndUser::getJobNumber, fndUser.getJobNumber())
                 .set(FndUser::getLoginName, fndUser.getLoginName());
         super.update(fndUserUpdateWrapper);
+    }
+
+    @Override
+    public void simpleQueryWrapperUpdate(FndUser fndUser) {
+        QueryWrapper<FndUser> fndUserQueryWrapper = new QueryWrapper<>();
+        fndUserQueryWrapper.eq("job_number", fndUser.getJobNumber());
+        super.update(fndUser, fndUserQueryWrapper);
     }
 }

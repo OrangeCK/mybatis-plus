@@ -94,5 +94,16 @@ public class FndUser implements Serializable {
     @TableField("s_ut")
     private Date sUt;
 
-
+    //构造函数
+    public FndUser(){
+        System.out.println("----构造函数---");
+    }
+        //静态的参数初始化
+    static{
+        System.out.println("---静态的参数初始化---");
+    }
+        //非静态的参数初始化
+    {
+        System.out.println("----非静态的参数初始化---");
+    }
 }
